@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    <img src="https://showcase.informatik.tha.de/media/pages/sose-2024/greenassistant/93a02caa4f-1717503610/greenassistant_idee.jpg" alt="Logo" height="350">
+    <img src="logo.gif" alt="Logo" height="350">
     </br> </br>
     <b>GreenAssistant</b>
     </br>
@@ -128,6 +128,6 @@ Vielen Dank an alle Beteiligten!
 
 ## Softwarestruktur
 <h1 align="center">
-    <img src="images/Komponentendiagramm.png" alt="SW-Komponenten" height="350"> </br>
+    <img src="Komponentendiagramm.png" alt="SW-Komponenten" height="550"> </br>
 </h1>
 
