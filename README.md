@@ -113,8 +113,7 @@ Vielen Dank an alle Beteiligten!
 
  /frontend/src/axios.ts
  ````
- axios.ts
-    const baseURL = 'https://greenassistant.ai.tha.de:7000'
+ const baseURL = 'https://greenassistant.ai.tha.de:7000'
  ````
 
  /backend/crud/settings.py
