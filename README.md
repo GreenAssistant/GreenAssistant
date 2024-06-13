@@ -134,7 +134,7 @@ Vielen Dank an alle Beteiligten!
  		'https://greenassistant.ai.tha.de',
  	]
  	
- 	CSRF_TRUSTED_ORIGINS = [
+    CSRF_TRUSTED_ORIGINS = [
         'https://greenassistant.ai.tha.de',
         'https://greenassistant.ai.tha.de:7000',
     ]
