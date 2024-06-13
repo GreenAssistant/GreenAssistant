@@ -135,9 +135,9 @@ Vielen Dank an alle Beteiligten!
  	]
  	
  	CSRF_TRUSTED_ORIGINS = [
-     'https://greenassistant.ai.tha.de',
-     'https://greenassistant.ai.tha.de:7000',
- ]
+        'https://greenassistant.ai.tha.de',
+        'https://greenassistant.ai.tha.de:7000',
+    ]
 ```` 
 ---
 #### Applikation starten:
