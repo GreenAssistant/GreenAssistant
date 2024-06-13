@@ -114,30 +114,29 @@ Vielen Dank an alle Beteiligten!
  /frontend/src/axios.ts
  ````
  axios.ts
- 	const baseURL = 'https://greenassistant.ai.tha.de:7000'
+    const baseURL = 'https://greenassistant.ai.tha.de:7000'
  ````
 
  /backend/crud/settings.py
  ```` 
- settings.py
- 	DEBUG = False
+ DEBUG = False
  
- 	ALLOWED_HOSTS = [
- 		'greenassistant.ai.tha.de',
- 		'141.82.1.31',
- 	]
+ ALLOWED_HOSTS = [
+    'greenassistant.ai.tha.de',
+    '141.82.1.31',
+ ]
  	
- 	SECURE_SSL_REDIRECT = True
+ SECURE_SSL_REDIRECT = True
  
- 	CORS_ALLOWED_ORIGINS = [
- 		'http://localhost:3000',
- 		'https://greenassistant.ai.tha.de',
- 	]
+ CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://greenassistant.ai.tha.de',
+ ]
  	
-    CSRF_TRUSTED_ORIGINS = [
-        'https://greenassistant.ai.tha.de',
-        'https://greenassistant.ai.tha.de:7000',
-    ]
+ CSRF_TRUSTED_ORIGINS = [
+    'https://greenassistant.ai.tha.de',
+    'https://greenassistant.ai.tha.de:7000',
+ ]
 ```` 
 ---
 #### Applikation starten:
