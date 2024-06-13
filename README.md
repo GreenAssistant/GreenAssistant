@@ -89,6 +89,13 @@ Vielen Dank an alle Beteiligten!
  Visual Studio nötig. Hier einfach über den Installer das Tool für die Desktopentwicklung installieren und dann den
  *pip*-Befehl für das TSS-Paket ausführen.
  https://visualstudio.microsoft.com/de/downloads/
+ 
+ Sofern dies gegeben ist, kann auch die alternative requirements_full_deployment.txt verwendet werden, dort sind alle optinalen Packete ebenfalls enthalten.
+ ````
+ cd backend
+ pip install -r requirements_full_deployment.txt
+ ````
+ 
 5.  **Die Datenbank migrieren mit:**
  ````
  python manage.py migrate
@@ -113,6 +120,11 @@ Vielen Dank an alle Beteiligten!
  ````
  cd backend
  python manage.py runserver
+ ````
+ Für den produktiv Betrieb sollte nicht der Entwicklungsserver von Django verwendet werden. Deshalb ist in der requirements.txt ebenfalls gunicorn enthalten, worüber der Server für den besagten Live Betrieb gestartet werden kann.
+ ````
+ cd backend
+ gunicorn crud.wsgi --timeout 120
  ````
 8.  **Laufen beide Server ohne Probleme, so kann die Anwendung verwendet und modifiziert werden**
  - Hier einfach mal ausprobieren, ob man Daten zwischen Frontend und Backend verschicken kann.
