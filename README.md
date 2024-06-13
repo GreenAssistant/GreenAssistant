@@ -108,8 +108,40 @@ Vielen Dank an alle Beteiligten!
  npm install
  ````
 ---
+#### Einstellung anpassen:
+7.  **Frontend und Backend enthalten jeweils Beispielkonfigurationen, welche auf das eigene Umfeld und Hostingvarianten angepasst werden müssen!**
+
+ /frontend/src/axios.ts
+ ````
+ axios.ts
+ 	const baseURL = 'https://greenassistant.ai.tha.de:7000'
+ ````
+
+ /backend/crud/settings.py
+ ```` 
+ settings.py
+ 	DEBUG = False
+ 
+ 	ALLOWED_HOSTS = [
+ 		'greenassistant.ai.tha.de',
+ 		'141.82.1.31',
+ 	]
+ 	
+ 	SECURE_SSL_REDIRECT = True
+ 
+ 	CORS_ALLOWED_ORIGINS = [
+ 		'http://localhost:3000',
+ 		'https://greenassistant.ai.tha.de',
+ 	]
+ 	
+ 	CSRF_TRUSTED_ORIGINS = [
+     'https://greenassistant.ai.tha.de',
+     'https://greenassistant.ai.tha.de:7000',
+ ]
+```` 
+---
 #### Applikation starten:
-7.  **Dann eine Zweite Konsole öffnen**
+8.  **Dann eine Zweite Konsole öffnen**
  -  **Auf der ersten wechseln wir in den *frontend* Ordner und starten den Frontend-Server:**
  ````
  cd frontend
@@ -126,11 +158,11 @@ Vielen Dank an alle Beteiligten!
  cd backend
  gunicorn crud.wsgi --timeout 120
  ````
-8.  **Laufen beide Server ohne Probleme, so kann die Anwendung verwendet und modifiziert werden**
+9.  **Laufen beide Server ohne Probleme, so kann die Anwendung verwendet und modifiziert werden**
  - Hier einfach mal ausprobieren, ob man Daten zwischen Frontend und Backend verschicken kann.
 ---
 #### Requirements-File aktualisieren:
-9.  **Wurden während der Entwicklung neue Packages installiert, muss die *requirements.txt* aktualisiert werden.
+10.  **Wurden während der Entwicklung neue Packages installiert, muss die *requirements.txt* aktualisiert werden.
  Hierzu einfach folgenden befehle im Ordner *backend* ausführen:**
  ````
  cd backend
