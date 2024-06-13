@@ -1,0 +1,30 @@
+@import '../global.css';
+
+.microphone-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.microphone-button {
+    color: var(--light-green) !important;
+    background-color: var(--dark-green) !important;
+}
+
+.microphone-icon {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.microphone-transcript {
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+@media screen and (max-width: 960px) {
+    .microphone-transcript {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+}

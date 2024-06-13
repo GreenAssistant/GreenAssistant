@@ -283,7 +283,7 @@ GitHub.sublime-settings
 
 #ollama
 vector/
-data/*
+data/
 
 #audio file
 *.wav

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id="generate-vector-data">
+  <div>
+    <h2>Generate Vector Data</h2>
+    <form method="post">
+      <p>After uploading new files, you need to generate new Vectordata, so the LLM Model can use the new data: </p>
+        {% csrf_token %}
+        <input type="submit" name="btn-vector-data" value="Generate" />
+    </form>
+  </div>
+</section>
+<div>
+  <a href="{% url 'list-view' %}">View all LLM Data Files</a>
+</div>
+<div>
+  <a href="{% url 'dashboard' %}">Back to dashboard</a>
+</div>
+{% endblock %}

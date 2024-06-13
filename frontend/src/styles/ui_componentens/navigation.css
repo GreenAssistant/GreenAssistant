@@ -1,0 +1,30 @@
+@import '../global.css';
+
+.navigation-text {
+  size: 18px;
+  color: var(--pale-grey);
+}
+
+.navigation-icon {
+  size: 18px;
+  margin-right: 5px;
+  color: var(--pale-grey);
+}
+
+.navigation-text-bold {
+  size: 18px;
+  color:var(--pale-grey);
+  font-weight: bolder !important;
+}
+
+.navigation-separator {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.navigation-burger-menu-icon {
+  background-color: var(--dark-green);
+  color: var(--pale-grey);
+}
+

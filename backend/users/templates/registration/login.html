@@ -1,0 +1,17 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="container">
+  <h2>Login</h2>
+
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Login" class="btn btn-outline-success" />
+  </form>
+  <br />
+  <div>
+    <button class="btn btn-outline-success">
+      <a href="{% url 'dashboard' %}">Back to dashboard</a>
+    </button>
+  </div>
+</div>
+{% endblock %}

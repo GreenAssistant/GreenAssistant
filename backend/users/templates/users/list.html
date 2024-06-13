@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div class="container">
+  <h2>All uploaded files</h2>
+  <div class="container">
+    <button class="btn btn-outline-success">
+      <a href="{% url 'upload' %}">Upload new file</a>
+    </button>
+  </div>
+  <br/>
+  <div class="overflow-auto">
+    <div class="row">
+      {% for file in files %}
+      <div class="col">
+        <div class="card" style="width: 25rem">
+          <div class="card-body">
+            <h6 class="card-title">{{ file.name }}</h6>
+            <button class="btn btn-outline-success">
+              <a href="{% url 'delete-file' file.pk %}">Delete File</a>
+            </button>
+          </div>
+        </div><br/>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-outline-success"> 
+      <a href="{% url 'dashboard' %}">Back to dashboard</a>
+    </button>
+  </div>
+</div>
+{% endblock %}

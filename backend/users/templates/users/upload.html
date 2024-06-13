@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% load widget_tweaks %} {% block content %}
+<div class="container">
+  <section id="upload-file">
+    <div class="container">
+      <h2>Upload Files</h2>
+      <div>
+        <button class="btn btn-outline-success">
+          <a href="{% url 'list-view' %}">View all LLM Data Files</a>
+        </button>
+      </div>
+      <br />
+      <div>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Filename:</label>
+              <p class="form-control">{% render_field form.name %}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">File:</label>
+              <p class="form-control">{% render_field form.file %}</p>
+            </div>
+          </div>
+          <input
+            type="submit"
+            value="Upload"
+            accept=".txt"
+            class="btn btn-success"
+          />
+        </form>
+      </div>
+    </div>
+  </section>
+  <div>
+    <h3>Generate Vector Data</h3>
+    <p>
+      After uploading new files, you need to generate new Vectordata, so the LLM
+      Model can use the new data:
+
+      <a href="{% url 'generate' %}">Generate Vector Data</a>
+    </p>
+  </div>
+  <br />
+  <div>
+    <button class="btn btn-outline-success">
+      <a href="{% url 'dashboard' %}">Back to dashboard</a>
+    </button>
+  </div>
+</div>
+{% endblock %}

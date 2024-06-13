@@ -1,0 +1,15 @@
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    margin-bottom: 90px;
+}
+
+.chat-content::-webkit-scrollbar {
+    display: none;
+}

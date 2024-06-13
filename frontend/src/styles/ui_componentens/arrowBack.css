@@ -1,0 +1,18 @@
+@import '../global.css';
+
+.arrow-back-container {
+    padding-left: 140px;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+
+    .arrow-back-container {
+    padding-left: 0;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    }
+}

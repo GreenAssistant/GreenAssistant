@@ -1,0 +1,28 @@
+
+.chat-block-container {
+    display: flex;
+    overflow-x: hidden;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.chat-block-icon {
+    height: 30px !important; 
+    width: 30px !important;
+}
+
+.chat-block-content {
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 960px) { 
+    
+    .chat-block-container {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .chat-block-content {
+        margin-left: 5px;
+    }
+}

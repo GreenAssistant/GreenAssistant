@@ -1,0 +1,27 @@
+/* global.css */
+
+:root {
+  --background: #EAEEEA;
+  --dark-green: #24582A;
+  --light-green: #EAEEEA;
+  --pale-grey: #F4F3E8;
+  --light-grey: #CDD5CE;
+  --ecology: #A1BC51;
+  --social: #FBC04E;
+  --economy: #5BA8DE;
+  --culture: #E45EA7;
+  --link-green: #307538;
+}
+
+[theme="contrast"] {
+  --background: #000000;
+  --dark-green: #000000;
+  --light-green: #fff;
+  --pale-grey: #fff;
+  --light-grey: #fff;
+  --ecology: #fff;
+  --social: #fff;
+  --economy: #fff;
+  --culture: #fff;
+  --link-green: #000000;
+}
