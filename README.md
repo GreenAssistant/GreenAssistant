@@ -41,6 +41,15 @@ Vielen Dank an alle Beteiligten!
 
 
 # Quickstart für Entwickler
+### Ressourcenanforderungen fürs Hosting
+Wir hatten am Projekttag den Chatbot in einer VM gehostet, die folgende Hardwarekonfiguration hatte:
+ - CPU (8 Kerne)
+ - GPU (16 GB VRAM)
+ - RAM (32 GB)
+ - Storage (256GB)
+
+Wichtig! Dies sind nur Richtwerte. Es gibt zahlreiche weitere Einflussfaktoren, welche die Performance beeinträchtigen könnten, was sich in einer langsameren Antwortzeit äußert.
+
 ### Um mit dem Entwickeln zu beginnen, bitte folgende Befehle beachten und ausführen
 ---
 #### Tools installieren:
