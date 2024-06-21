@@ -48,8 +48,9 @@ Wir hatten am Projekttag den Chatbot in einer VM gehostet, die folgende Hardware
  - RAM (32 GB)
  - Storage (256GB)
 
-Wichtig! Dies sind nur Richtwerte. Es gibt zahlreiche weitere Einflussfaktoren, welche die Performance beeinträchtigen könnten, was sich in einer langsameren Antwortzeit äußert.
+Wichtig! Dies sind nur Richtwerte. Es gibt zahlreiche weitere Einflussfaktoren, welche die Performance beeinträchtigen könnten, was sich in einer langsameren Antwortzeit äußert.  
 
+---
 ### Um mit dem Entwickeln zu beginnen, bitte folgende Befehle beachten und ausführen
 ---
 #### Tools installieren:
@@ -165,6 +166,9 @@ Wichtig! Dies sind nur Richtwerte. Es gibt zahlreiche weitere Einflussfaktoren, 
  cd backend
  gunicorn crud.wsgi --timeout 120
  ````
+ Zudem ist es natürlich sinnvoll, dass für den produktiven Betrieb kein Terminal im klassischen Sinn verwendet wird, da dieses terminiert wird, sobald zum Beispiel die IDE geschlossen wird.  
+ Wir haben uns deshalb für das Linux Tool ["screen"](https://wiki.ubuntuusers.de/Screen/) entschieden, womit Detached Terminal Session erstellt werden können und somit Frontend/Backend weiterläuft auch wenn die IDE geschlossen wird.  
+ 
 9.  **Laufen beide Server ohne Probleme, so kann die Anwendung verwendet und modifiziert werden**
  - Hier einfach mal ausprobieren, ob man Daten zwischen Frontend und Backend verschicken kann.
 ---
