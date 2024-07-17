@@ -23,14 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5is2e#195v95$e&1-z*d@)vad8=z-@%wdk3i@br4c$#@kno#h('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = [
-    'greenassistant.ai.tha.de',
-    '141.82.1.31',
-]
+#DEPLOYMENT
+#DEBUG = False
+DEBUG = True
 
-SECURE_SSL_REDIRECT = True
+#DEPLOYMENT
+#ALLOWED_HOSTS = [
+#    'greenassistant.ai.tha.de',
+#    '141.82.1.31',
+#]
+ALLOWED_HOSTS = []
+
+#DEPLOYMENT
+#SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -66,11 +72,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#DEPLOYMENT
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:3000',
+#    'https://greenassistant.ai.tha.de',
+#]
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://greenassistant.ai.tha.de',
+    'http://localhost:3000'
 ]
 
+#DEPLOYMENT
 CSRF_TRUSTED_ORIGINS = [
     'https://greenassistant.ai.tha.de',
     'https://greenassistant.ai.tha.de:7000',

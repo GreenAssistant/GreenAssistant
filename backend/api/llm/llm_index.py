@@ -14,7 +14,8 @@ import shutil
 # ollama
 # https://github.com/ollama/ollama
 # model storage: \\wsl.localhost\Ubuntu\usr\share\ollama\.ollama
-Settings.llm = Ollama(model="llama3", request_timeout=90.0)
+# configure the request_timeout when deploy
+Settings.llm = Ollama(model="llama3", request_timeout=180.0)
 
 # Get the path to the directory of the currently running script
 current_dir = os.path.dirname(os.path.abspath(__file__))
