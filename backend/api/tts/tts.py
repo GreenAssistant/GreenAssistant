@@ -1,10 +1,10 @@
 """
 TEXT TO SPEECH
 """
+
 import os
 import torch
 from TTS.api import TTS
-# from rvc_infer import rvc_convert
 
 
 class Custom_TTS:
@@ -36,15 +36,13 @@ class Custom_TTS:
             None
         """
         self.delete_file(self.__output_audio_file_path)
-        if len(current_answer) <= 400:
-            print('Converting into speech ...')
-            self.__tts.tts_to_file(text=current_answer, speaker_wav=self.__clone_audio_file_path, language="de",
-                                   file_path=self.__output_audio_file_path, split_sentences=False, speed=0.6)
-        else:
-            print('to much characters, can´t convert to speech')
 
-        # TODO Run RVC
-        # rvc_convert(model_path="./zirbus.pth", input_path="./tts.wav")
+        print('Converting into speech ...')
+        self.__tts.tts_to_file(text=current_answer,
+                               speaker_wav=self.__clone_audio_file_path,
+                               language="de",
+                               file_path=self.__output_audio_file_path,
+                               split_sentences=False, speed=0.6)
 
     @staticmethod
     def delete_file(absolut_path: str) -> None:

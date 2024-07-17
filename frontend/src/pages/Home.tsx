@@ -10,8 +10,6 @@ import {Prompt} from "../types";
 import {Microphone} from "../ui_components/Microphone";
 import '../styles/pages/home.css'
 import {SessionManager} from "../manager/SessionManager";
-// @ts-ignore
-import FileSaver from 'file-saver';
 
 
 export const Home = () => {
@@ -23,6 +21,7 @@ export const Home = () => {
     const [showTextfield, setShowTextfield] = useState<boolean>(false);
     const [showCharacter, setShowCharacter] = useState<boolean>(true);
     const [newQuestion, setNewQuestion] = useState<string>('');
+    const [textInputValue, setTextInputValue] = useState<string>('');
     const [prompts, setPrompts] = useState<Prompt[]>([]);
     const [characterBehavior, setCharacterBehavior] =
         useState<'idle' | 'idleBlinking' | 'thinking' | 'idea'>('idleBlinking')
@@ -31,7 +30,6 @@ export const Home = () => {
         getFromSession()
         sessionManager.generate('clientID')
     }, [])
-
 
     const getFromSession = (): void => {
         let currentPrompts: Prompt[] = [];
@@ -57,9 +55,11 @@ export const Home = () => {
 
     const sendQuestion = (question: string, isWritten: boolean): void => {
         const sanitizedInput: string = validationManager.validate(question);
-        console.log('send');
         if (sanitizedInput === null || sanitizedInput === undefined || sanitizedInput === "") {
-            notify.error("Bitte überprüfe Deine Eingabe.\n Deine Frage kann nicht leer sein.");
+            if (isWritten) {
+                notify.warning("Bitte überprüfe Deine Eingabe, deine Frage kann nicht leer sein.");
+            }
+            return
         }
         setCharacterBehavior('thinking')
         AxiosInstance.post(
@@ -80,6 +80,7 @@ export const Home = () => {
         }).catch((response): void => {
             if (response.code === "ERR_NETWORK") {
                 notify.error("Server konnte nicht erreicht werden.");
+                setCharacterBehavior('idleBlinking')
             } else {
                 console.log(response);
             }
@@ -97,7 +98,7 @@ export const Home = () => {
            const audio: HTMLAudioElement = new Audio(url);
            await audio.play();
        } catch (error) {
-           notify.info('Werfe einen Blick in den Chatverlauf. :)')
+           notify.info('Werfe einen Blick in den Chatverlauf')
            console.error('Error downloading file:', error);
        }
     }
@@ -109,13 +110,12 @@ export const Home = () => {
                     <Character
                         behavior={characterBehavior}
                         showDefaultQuestion
-                        onClickTopLeft={() => sendQuestion("Ökologie ist toll, erzähl mir mehr zu diesem Thema", false)}
-                        onClickBottomLeft={() => sendQuestion("Soziales ist toll, erzähl mir mehr zu diesem Thema", false)}
-                        onClickTopRight={() => sendQuestion("Wirtschaft ist toll, erzähl mir mehr zu diesem Thema", false)}
-                        onClickBottomRight={() => sendQuestion("Kultur ist toll, erzähl mir mehr zu diesem Thema", false)}
+                        onClickTopLeft={() => sendQuestion("Was ist Ökologie in Augsburg", false)}
+                        onClickBottomLeft={() => sendQuestion("Was ist Soziales in Augsburg", false)}
+                        onClickTopRight={() => sendQuestion("Was ist Wirtschaft in Augsburg", false)}
+                        onClickBottomRight={() => sendQuestion("Was ist Kultur in Augsburg", false)}
                     />
                     <Microphone onMouseUp={(transcript:string): void => {
-                        setCharacterBehavior("thinking");
                         sendQuestion(transcript, false);
                     }}/>
 
@@ -143,22 +143,26 @@ export const Home = () => {
             <div className='padding-bottom'></div>
             <TextInputDrawer
                 open={showTextfield}
+                value={textInputValue}
                 placeholder={"Stell mir hier einfach eine Frage ..."}
                 maxLength={maxLengthTextfield}
                 onChange={(event): void => {
                     if(event.target.value.length === maxLengthTextfield){
                         notify.warning(`Deine Frage kann nicht länger als ${maxLengthTextfield} Zeichen sein!`);
                     }
+                    setTextInputValue(event.target.value);
                     setNewQuestion(event.target.value);
                 }}
                 onButtonClick={(): void => {
                     sendQuestion(newQuestion, true);
+                    setTextInputValue('');
                 }}
                 onKeyDown={(event): void => {
                     if(event.key === "Enter"){
                         event.preventDefault();
                         event.stopPropagation();
                         sendQuestion(newQuestion, true);
+                        setTextInputValue('');
                     }
                 }}
                 onTextFieldClick={() => setShowCharacter(false)}

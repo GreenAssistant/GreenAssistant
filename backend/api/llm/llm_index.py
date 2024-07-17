@@ -9,13 +9,18 @@ from llama_index.llms.ollama import Ollama
 from llama_index.core.memory import ChatMemoryBuffer
 import os.path
 import datetime
-import shutil
+import markdown
+
+import warnings
+
+# ignore the FutureWarning von huggingface_hub
+warnings.filterwarnings("ignore", message="`resume_download` is deprecated.*")
 
 # ollama
-# https://github.com/ollama/ollama
+# For more information about ollama: https://github.com/ollama/ollama
+
 # model storage: \\wsl.localhost\Ubuntu\usr\share\ollama\.ollama
-# configure the request_timeout when deploy
-Settings.llm = Ollama(model="llama3", request_timeout=180.0)
+Settings.llm = Ollama(model="llama3", request_timeout=90.0)
 
 # Get the path to the directory of the currently running script
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -32,7 +37,7 @@ Settings.embed_model = resolve_embed_model("local:BAAI/bge-m3")
 
 class Custom_LLM:
     __prompt_extensions = ['Antworte in maximal 100 Wörtern!',
-                           ]
+                           'Antworte kurz!']
 
     def __init__(self):
         self.__chat_history = ChatMemoryBuffer(token_limit=6000)
@@ -66,7 +71,7 @@ class Custom_LLM:
             system_prompt=(
                 "You are the GreenAssistant Chatbot and only provide answers on the topic of sustainability."
                 "They are helpful and always answer completely in German. If you dont know something, admit it."
-                "In addition, you only include information from the existing files."
+                "In addition, you only include information from the existing files. Always give short answers!"
             )
         )
         return chat_engine
@@ -82,13 +87,6 @@ class Custom_LLM:
 
         Returns: None
         """
-        if os.path.isdir(VECTOR_DIR):
-            try:
-                shutil.rmtree(VECTOR_DIR)
-                print("Directory and all its contents deleted")
-            except Exception as e:
-                print(f"Error: {e}")
-        
         # create the index and persist it
         # https://docs.llamaindex.ai/en/latest/getting_started/starter_example/#storing-your-index
         # load the documents
@@ -115,10 +113,6 @@ class Custom_LLM:
         Returns:
             answer: The generated answer
         """
-
-        if current_question.lower() == "reset":
-            self.__chat_engine.reset()
-
         print()
         print('Generating Answer, this may take a while ...')
         answer = self.__chat_engine.chat(message=current_question + self.concatenate_prompt_extensions(),
@@ -149,7 +143,7 @@ class Custom_LLM:
                 if j.dict()['role'] == 'user':
                     prompt['question'] = j.dict()['content']
                 if j.dict()['role'] == 'assistant':
-                    prompt['answer'] = j.dict()['content']
+                    prompt['answer'] = self.print_as_markdown(j.dict()['content'])
         self.__prompts.append(prompt)
         return self.__prompts
 
@@ -200,3 +194,16 @@ class Custom_LLM:
             self.__last_use = datetime.datetime.now()
             return True
         return False
+
+    @staticmethod
+    def print_as_markdown(message: str) -> str:
+        """
+        Converts a string with markdown into a readable style
+
+        Args:
+            message: the string, that need to be styled
+
+        Returns:
+            the styled string
+        """
+        return markdown.markdown(message)

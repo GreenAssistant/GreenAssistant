@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import {Character} from "./Character";
 import {Prompt} from "../types";
+import {MarkdownRenderer} from "./MarkdownRenderer";
 
 
 interface ChatBlockProps {
@@ -34,7 +35,7 @@ export const ChatBlock: React.FC<ChatBlockProps> = (props: ChatBlockProps) => {
                     <Typography paragraph>
                         <b>GreenAssistant:</b>
                         <br/>
-                        {props.prompt.answer}
+                        <MarkdownRenderer htmlContent={props.prompt.answer}/>
                     </Typography>
                 </div>
             </div>

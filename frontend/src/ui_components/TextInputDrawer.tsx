@@ -17,6 +17,7 @@ interface TextInputDrawerProps {
     drawerWidth?: string,
     open: boolean,
     placeholder: string,
+    value: string
 }
 
 
@@ -55,6 +56,7 @@ const TextInputDrawer: React.FC<TextInputDrawerProps> = (props: TextInputDrawerP
                     <TextField
                         id={'prompt'}
                         name={'prompt'}
+                        value={props.value}
                         placeholder={props.placeholder}
                         focused={false}
                         InputLabelProps={{
