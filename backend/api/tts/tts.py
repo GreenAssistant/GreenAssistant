@@ -42,7 +42,7 @@ class Custom_TTS:
                                speaker_wav=self.__clone_audio_file_path,
                                language="de",
                                file_path=self.__output_audio_file_path,
-                               split_sentences=False, speed=0.6)
+                               split_sentences=True, speed=0.6)
 
     @staticmethod
     def delete_file(absolut_path: str) -> None:

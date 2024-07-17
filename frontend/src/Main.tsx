@@ -1,13 +1,13 @@
 import React from 'react';
-import {Route, Routes, BrowserRouter} from "react-router-dom";
-import {Chat} from "./pages/Chat";
 import 'bootstrap/dist/css/bootstrap.css'
 import {ReactJSXElement} from "@emotion/react/types/jsx-namespace";
+import {Route, Routes, BrowserRouter} from "react-router-dom";
 import {Notification} from "./ui_components/Notifications";
 import {Navigation} from "./ui_components/Navigation";
+import {Chat} from "./pages/Chat";
 import {Impressum} from "./pages/Impressum";
 import {License} from "./pages/License";
-import { Datenschutz } from './pages/Datenschutz';
+import {Datenschutz} from './pages/Datenschutz';
 
 function Main(): ReactJSXElement {
     return (
