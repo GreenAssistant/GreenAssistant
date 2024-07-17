@@ -12,7 +12,7 @@ import '../styles/pages/home.css'
 import {SessionManager} from "../manager/SessionManager";
 
 
-export const Home = () => {
+export const Chat = () => {
     const backendURL: string = 'greenAssistant/';
     const sessionManager: SessionManager = new SessionManager()
     // if this value is changed, change it in backend/managers/validation_manger as well!
@@ -118,7 +118,6 @@ export const Home = () => {
                     <Microphone onMouseUp={(transcript:string): void => {
                         sendQuestion(transcript, false);
                     }}/>
-
                 </div>
             )}
             {!showCharacter &&
@@ -138,7 +137,6 @@ export const Home = () => {
                     }}
                 />
             )}
-
             {/* On screens with small height, the input drawer and chevronopentextinput shouldn't overlay the microphone icon and its text */}
             <div className='padding-bottom'></div>
             <TextInputDrawer

@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../styles/ui_componentens/textInputDrawer.css';
 import '../styles/global.css';
 
+
 interface TextInputDrawerProps {
     onChange(event: any): void,
     onButtonClick(): void,
@@ -20,12 +21,9 @@ interface TextInputDrawerProps {
     value: string
 }
 
-
 const TextInputDrawer: React.FC<TextInputDrawerProps> = (props: TextInputDrawerProps) => {
-
     const isMobile = useMediaQuery('(max-width:600px)');
     const isSmallTablet = useMediaQuery('(max-width:960px)');
-
 
     return (
         <div>

@@ -85,11 +85,8 @@ export const Notification: React.FC<NotificationProps> = (props: NotificationPro
             timeout: null,
             auto: false
         }
-
-        if (type !== 'error') {
-            item.auto = true
-            autoRemove(item)
-        }
+        item.auto = true
+        autoRemove(item)
 
         setItems(prevState => {
             prevState.splice(0, 0, item)
@@ -127,10 +124,10 @@ export const Notification: React.FC<NotificationProps> = (props: NotificationPro
     return (
         <Stack
             style={{
-                position:'fixed',
-                bottom: props.spacingBottom ? props.spacingBottom : 20,
-                right: props.spacingRight ? props.spacingRight: 20,
-        }}
+                display: 'flex',
+                justifyContent: 'center',
+                zIndex: '999999',
+            }}
             spacing={props.spacing ? props.spacing : 2}>
             {items.map((item: NotifyItem, index: number) => {
                 return (

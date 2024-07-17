@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes, BrowserRouter} from "react-router-dom";
-import {Home} from "./pages/Home";
+import {Chat} from "./pages/Chat";
 import 'bootstrap/dist/css/bootstrap.css'
 import {ReactJSXElement} from "@emotion/react/types/jsx-namespace";
 import {Notification} from "./ui_components/Notifications";
@@ -14,9 +14,9 @@ function Main(): ReactJSXElement {
         <div>
             <BrowserRouter>
                 <Navigation>
-                <Notification variant={'outlined'} tooltip={'klicken, um die Nachricht zu entfernen'} spacingBottom={150}/>
+                <Notification variant={'filled'} tooltip={'klicken, um die Nachricht zu entfernen'} spacingBottom={150}/>
                     <Routes>
-                        <Route path={''} element={<Home/>}/>
+                        <Route path={''} element={<Chat/>}/>
                         <Route path={'/datenschutz'} element={<Datenschutz/>}/>
                         <Route path={'/impressum'} element={<Impressum/>}/>
                         <Route path={'/lizenz'} element={<License/>}/>
