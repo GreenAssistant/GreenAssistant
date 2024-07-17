@@ -21,17 +21,17 @@
         ````
 
 3. **Einen Super-User erstellen:**
-    - Damit wir die Datenbank auch verwalten können, müssen wir uns einen Super-user erstellen. Damit gelangen wir dann
-    auch auf die Admin-Seite:
-    ````
-    python manage.py createsuperuser
-   ````
-   Anschließend einen Namen und ein Passwort vergeben
+    - Damit wir die Datenbank auch verwalten können, müssen wir uns einen Super-user erstellen. Damit gelangen wir dann auch auf die Admin-Seite:
+       ````
+       python manage.py createsuperuser
+      ````
+      Anschließend einen Namen und ein Passwort vergeben
 
 4. **Starten des Servers:**
-    ````
-    python manage.py runserver
-    ````
+    - Damit der Server auch läuft, einmal den Server mit folgendem Befehl starten:
+       ````
+       python manage.py runserver
+       ````
 
 # Quickview LLM
 
@@ -63,7 +63,7 @@
     (Sobald keine Fehlermeldung erscheint, dass ollama nicht gefunden wurde, passt es.)
 
     Nun kann unser aktuelles Modell über ollama heruntergeladen werden:  
-    (dieser Befahl lädt aktuell das Kleinste der drei verfügbaren herunter und hat eine Größe von ca 5GB)
+    (dieser Befehl lädt aktuell das Kleinste der drei verfügbaren herunter und hat eine Größe von ca 5GB)
     ```
     ollama pull llama3
     ```
@@ -82,35 +82,26 @@ Ab diesem Zeitpunkt kann LlamaIndex im Python Code auf ollama zugreifen:
 Settings.llm = Ollama(model="llama3", request_timeout=30.0)
 ```
 
-# Quickview XTTS – RVC Pipeline
+# Quickview XTTS
 
-### Dieser Abschnitt beschreibt die Einrichtung und Verwendung von XTTS zu Real-Time Voice Cloning (RVC) Pipeline.
+### Dieser Abschnitt beschreibt die Einrichtung und Verwendung von XTTS
 
 1. **Installation der notwendigen Bibliotheken:** 
-    Pytorch, TTS- und RVC-Bibliotheken installieren:
+    Pytorch, TTS
 ```
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip install TTS
-pip install -e git+https://github.com/JarodMica/rvc-tts-pipeline.git#egg=rvc_tts_pipe
  ```
-Für RVC werden noch 2 weitere Dateien benötigt: `hubert_base.pt` und `rmvpe.pt` diese können vom [Huggingface Space von RVC](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main) heruntergeladen werden und müssen an demselben Ort sein an dem die Skripts ausführt werden.
-
-Zuletzt sollte ffmpeg installiert sein, ffmpeg ist ein Werkzeug zum Abspielen, Streamen und Umcodieren von Multimediadateien
-- Für Linux-Distributionen: Installiere `ffmpeg` über den Package Manager, beispielsweise:
-```
-sudo apt install ffmpeg
-```
-- Bei Windows downloade die [ffmpeg-git-full.7z](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z), entpacke die ZIP und lege sie in das C-Root-Verzeichnis. Anschließend öffne die Systemumgebungsvariablen und füge einen neuen Eintrag unter `Path` hinzu: `C:\ffmpeg\bin`
 
 2. **Voraussetzungen:** 
 - Eine aufgenommene Stimme (am besten als .wav Datei) die für XTTS benötigt wird
-- Ein Sprach-Modell, was RVC nutzt, um eine die Input-Stimme an die Zielstimme anzupassen.
-	- Dieses Sprach-Modell kann man selbst trainieren (z. B. über das [Web-UI von RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/docs/en/README.en.md)) oder über Webseiten wie [huggingface](https://huggingface.co) oder voice-models.com downloaden
 
-3. **XTTS:**  
+
+3. **XTTS Verwendung:**  
 Generierung einer Audiodatei mit XTTS aus einer input_voice.wav und einem Text
     ```python
     from TTS.api import TTS
+   
     tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=True)
     # generate speech by cloning a voice
     tts.tts_to_file(text="test text",
@@ -119,13 +110,4 @@ Generierung einer Audiodatei mit XTTS aus einer input_voice.wav und einem Text
                     language="de",
                     split_sentences=True
                     )
-    ```
-4. **RVC:** 
-Erzeugte Audiodatei an die Zielstimme anpassen
-    ```python
-	from rvc_infer import rvc_convert
-	
-	rvc_convert(model_path="rvc_speaker_model.pth",
-                f0_up_key=0,
-                input_path=audio_file_name)
     ```
