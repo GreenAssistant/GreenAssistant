@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { AxiosInstance } from "../axios";
-import { ValidationManager } from "../manager/ValidationManager";
 import { notify } from "../ui_components/Notifications";
-import { Character } from "../ui_components/Character";
-import { ChevronOpenTextInput } from "../ui_components/ChevronOpenTextInput";
+import {Prompt} from "../types";
+import {SessionManager} from "../manager/SessionManager";
+import { ValidationManager } from "../manager/ValidationManager";
+import {Character} from "../ui_components/Character";
+import {ChevronOpenTextInput} from "../ui_components/ChevronOpenTextInput";
 import TextInputDrawer from "../ui_components/TextInputDrawer";
 import {ChatBox} from "../ui_components/ChatBox";
-import {Prompt} from "../types";
 import {Microphone} from "../ui_components/Microphone";
 import '../styles/pages/home.css'
-import {SessionManager} from "../manager/SessionManager";
 
 
 export const Chat = () => {
