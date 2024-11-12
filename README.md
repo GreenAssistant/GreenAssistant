@@ -29,7 +29,7 @@ Der Chatbot "GreenAssistant" gibt praktische Tipps für einen nachhaltigeren All
 
 ### **Mitwirkende im Sommersemester 2024:**
 
-- **Studenten/Studentinnen:** Marc Fischer, Manuel Hagen, Lukas Konietzka, Theresa Mayer, Dominik Wagner, Stephan Schorer, Kim Yen Pham, Markus Riffel, Lara Gerlach, Trang Nguyen
+- **Studenten/Studentinnen:** Marc Fischer, Manuel Hagen, Lukas Konietzka, Theresa Mayer, Dominik Wegner, Stephan Schorer, Kim Yen Pham, Markus Riffel, Lara Gerlach, Trang Nguyen
 
 - **Beteiligte:** Büro f. Nachhaltigkeit der Stadt Augsburg<br>
 
