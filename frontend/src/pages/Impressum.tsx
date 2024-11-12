@@ -49,7 +49,7 @@ export const Impressum: React.FC<ImpressumProps> = (props: ImpressumProps) => {
 
             <section id="GitHub">
               <GitHub />
-              <a href="link here">Folge uns auf Github!</a>
+              <a href="https://github.com/GreenAssistant/GreenAssistant">Folge uns auf Github!</a>
             </section>
           </Grid>
         </Grid>

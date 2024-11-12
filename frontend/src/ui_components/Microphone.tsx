@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import '../styles/ui_componentens/character.css'
 import MicIcon from '@mui/icons-material/Mic';
 import IconButton from "@mui/material/IconButton";
@@ -21,8 +21,14 @@ export const Microphone: React.FC<MicrophoneProps> = (props: MicrophoneProps) =>
         browserSupportsSpeechRecognition
     } = useSpeechRecognition();
 
+     useEffect((): void => {
+        if (!browserSupportsSpeechRecognition) {
+            notify.error(['Dein Browser unterstützt keine Spracherkennung, du kannst aber die textgebundene Chatfunktion nutzen.',
+                'Verwende für die Sprachfunktion Chrome, Edge oder Safari.'])
+        }
+    }, [])
+
     if (!browserSupportsSpeechRecognition) {
-        notify.error('Dein Browser unterstützt keine Spracherkennung, bitte verwende Safari oder Chrome.')
         return <div></div>;
     }
     const startListening = (): void => {
